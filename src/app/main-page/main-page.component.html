@@ -1,0 +1,77 @@
+<section class="main-wrapper">
+    <!-- Sidebar -->
+    <div class="side-nav-bar">
+      <button mat-flat-button class="side-nav-bar-button" (click)="activeTab = 'users'">Users</button>
+      <button mat-flat-button class="side-nav-bar-button" (click)="activeTab = 'maker'">Maker Tab</button>
+      <button mat-flat-button class="side-nav-bar-button" (click)="activeTab = 'checker'">Checker Tab</button>
+      <button mat-flat-button class="side-nav-bar-button" (click)="activeTab = 'rfc'">Raise RFC</button>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+        <div *ngIf="activeTab === 'users'">
+            <h2>Users Content</h2>
+            <p>Display user data here...</p>
+          </div>
+          <div *ngIf="activeTab === 'maker'">
+            <h2>Maker Tab Content</h2>
+            <p>Show maker functionality here...</p>
+          </div>
+          <div *ngIf="activeTab === 'checker'">
+            <h2>Checker Tab Content</h2>
+            <p>Checker-specific actions...</p>
+          </div>
+          <div *ngIf="activeTab === 'rfc'">
+            <h2>Raise RFC Content</h2>
+            <form (ngSubmit)="onSubmit()" #formRef="ngForm">
+                <div class="mb-3">
+                  <label class="form-label">Project/Application Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="formData.application_name" name="application_name" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">RFC Description</label>
+                  <input type="text" class="form-control" [(ngModel)]="formData.description" name="description" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">E-mail</label>
+                  <input type="email" class="form-control" [(ngModel)]="formData.email" name="email" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">RFC Details</label>
+                  <textarea class="form-control" rows="4" [(ngModel)]="formData.details" name="details"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit & Download Word</button>
+              </form>
+              <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+            <!-- <div>
+                <div class="container mt-5">
+                    <div id="form-errors" class="alert alert-danger d-none"></div>
+                    <form method="POST" novalidate>
+                      <div class="mb-3">
+                        <label for="rfc_title" class="form-label">RFC Title</label>
+                        <input type="text" class="form-control" id="rfc_title" name="rfc_title" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="rfc_description" class="form-label">RFC Description</label>
+                        <input type="text" class="form-control" id="rfc_description" name="rfc_description" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" />
+                      </div>
+                      <div class="mb-3">
+                        <label for="rfc_details" class="form-label">RFC Details</label>
+                        <input type="textarea" class="form-control" id="rfc-details" name="rfc-details" />
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+            </div> -->
+            
+          </div>
+    </div>
+  </section>
+  
