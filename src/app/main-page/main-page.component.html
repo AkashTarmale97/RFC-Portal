@@ -28,20 +28,69 @@
                   <label class="form-label">Project/Application Name</label>
                   <input type="text" class="form-control" [(ngModel)]="formData.application_name" name="application_name" required />
                 </div>
+              
                 <div class="mb-3">
-                  <label class="form-label">RFC Description</label>
-                  <input type="text" class="form-control" [(ngModel)]="formData.description" name="description" />
+                  <label class="form-label">Initiation Date</label>
+                  <input type="date" class="form-control" [(ngModel)]="formData.initiation_date" name="initiation_date" required />
                 </div>
+              
                 <div class="mb-3">
-                  <label class="form-label">E-mail</label>
-                  <input type="email" class="form-control" [(ngModel)]="formData.email" name="email" />
+                  <label class="form-label">Requester Contact Number</label>
+                  <input type="tel" class="form-control" [(ngModel)]="formData.contact_number" name="contact_number" />
                 </div>
+              
                 <div class="mb-3">
-                  <label class="form-label">RFC Details</label>
-                  <textarea class="form-control" rows="4" [(ngModel)]="formData.details" name="details"></textarea>
+                  <label class="form-label">Change Execution</label><br />
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="formData.change_execution" name="change_execution" />
+                    <label class="form-check-label">Will this change be executed?</label>
+                  </div>
                 </div>
+              
+                <div class="mb-3">
+                  <label class="form-label">Change Category</label><br />
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="formData.category_functional" name="category_functional" />
+                    <label class="form-check-label">Functional</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="formData.category_technical" name="category_technical" />
+                    <label class="form-check-label">Technical</label>
+                  </div>
+                </div>
+              
+                <div class="mb-3">
+                  <label class="form-label">Nature of Change</label><br />
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="formData.nature_minor" name="nature_minor" />
+                    <label class="form-check-label">Minor</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="formData.nature_major" name="nature_major" />
+                    <label class="form-check-label">Major</label>
+                  </div>
+                </div>
+              
+                <div class="mb-3">
+                  <label class="form-label">Implementation Date</label>
+                  <input type="date" class="form-control" [(ngModel)]="formData.implementation_date" name="implementation_date" />
+                </div>
+              
+                <div class="mb-3">
+                  <label class="form-label">Type of Change</label><br />
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="formData.type_enhancement" name="type_enhancement" />
+                    <label class="form-check-label">Enhancement</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="formData.type_bugfix" name="type_bugfix" />
+                    <label class="form-check-label">Bug Fix</label>
+                  </div>
+                </div>
+              
                 <button type="submit" class="btn btn-primary">Submit & Download Word</button>
               </form>
+              
               <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
             <!-- <div>

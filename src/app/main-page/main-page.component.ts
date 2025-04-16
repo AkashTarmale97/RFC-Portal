@@ -42,7 +42,18 @@ export class MainPageComponent {
     application_name: '',
     description: '',
     email: '',
-    details: ''
+    details: '',
+    initiation_date:'',
+    contact_number:'',
+    change_execution:'',
+    category_functional:'',
+    category_technical:'',
+    nature_minor:'',
+    nature_major:'',
+    implementation_date:'',
+    type_enhancement:'',
+    type_bugfix:''
+
   };
 
   constructor(private router: Router) {}

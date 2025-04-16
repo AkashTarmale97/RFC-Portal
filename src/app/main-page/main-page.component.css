@@ -176,10 +176,10 @@ form {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
-label::after {
+/* label::after {
   content: " *";
   color: red;
-}
+} */
 
 input.form-control,
 input.form-control:hover,
