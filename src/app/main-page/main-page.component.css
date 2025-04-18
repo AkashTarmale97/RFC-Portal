@@ -29,7 +29,9 @@
     background-color: #f5f5f5;
   }
   
-
+  button.btn.btn-primary {
+    padding: revert;
+}
 
   /* -----------------Form Css--------------------- */
   *,
@@ -40,11 +42,11 @@
   padding: 0;
 }
 
-html,
+/* html,
 body {
-  min-height: 100vh;
+  min-height: 200vh;
   font-family: system-ui, sans-serif;
-}
+} */
 
 .container {
   display: flex;
@@ -186,7 +188,7 @@ input.form-control:hover,
 input.form-control:focus,
 input.form-control.is-valid,
 input.form-control.is-valid:focus,
-input.form-control.is-invalid,
+/* input.form-control.is-invalid, */
 input.form-control.is-invalid:focus,
 input.form-control:disabled,
 input.form-control[readonly] {
