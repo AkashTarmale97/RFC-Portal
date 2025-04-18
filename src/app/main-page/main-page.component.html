@@ -22,182 +22,201 @@
             <p>Checker-specific actions...</p>
         </div>
         <div *ngIf="activeTab === 'rfc'">
-            <h2>Raise RFC Content</h2>
+            <h2 class="rfc-form-heading">Raise RFC Content</h2>
             <form (ngSubmit)="onSubmit()" #formRef="ngForm">
-                <div class="mb-3">
-                    <label class="form-label">Project/Application Name</label>
-                    <input type="text" class="form-control" [(ngModel)]="formData.application_name"
-                        name="application_name" required />
+                <div class="row">
+
+                    <!-- Column 1 -->
+                    <div class="column-two">
+                        <div class="mb-3">
+                            <label class="form-label">Project/Application Name</label>
+                            <input style="border: 1px solid black;" type="text" class="form-control" [(ngModel)]="formData.application_name"
+                                name="application_name" required />
+                        </div>
+        
+                        <div class="mb-3">
+                            <label name="initiation_date_label" class="form-label">Initiation Date</label>
+                            <input id ="initiation_date_input" style="border: 1px solid black;"  type="date" class="form-control" [min]="mintoDate"   [(ngModel)]="formData.initiation_date"
+                                name="initiation_date" style="color: black;" required readonly />
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label">Requester Contact Number</label>
+                            <input style="border: 1px solid black;" type="tel" class="form-control" [(ngModel)]="formData.contact_number" name="contact_number"
+                                required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" required>Change Execution</label><br />
+                            <div>
+                                <label>
+                                    <input type="radio" value="Normal" name="change_execution"
+                                        [(ngModel)]="formData.change_execution">Normal
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" value="Emergency" name="change_execution"
+                                        [(ngModel)]="formData.change_execution">Emergency
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" value="Compliance" name="change_execution"
+                                        [(ngModel)]="formData.change_execution">Compliance
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" required>Change Category</label><br />
+                            <div>
+                                <label>
+                                    <input type="radio" value="Major" name="change_category"
+                                        [(ngModel)]="formData.change_category">Major
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" value="Minor" name="change_category"
+                                        [(ngModel)]="formData.change_category">Minor
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" required>Nature of Change</label><br />
+                            <div>
+                                <label>
+                                    <input type="radio" value="Temporary" name="nature_of_change"
+                                        [(ngModel)]="formData.nature_of_change">Temporary
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" value="Permanent" name="nature_of_change"
+                                        [(ngModel)]="formData.nature_of_change">Permanent
+                                </label>
+                            </div>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label" required>Implementation Date</label>
+                            <input style="border: 1px solid black;" type="date" class="form-control" [(ngModel)]="formData.implementation_date"
+                                name="implementation_date" [min]="mintoDate" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Objective of Change:</label>
+                            <textarea class="form-control" [(ngModel)]="formData.ObjectiveofChange"
+                            name="ObjectiveofChange" style="border: 1px solid black;" required >
+                                <!-- <input type="textarea" class="form-control" [(ngModel)]="formData.ObjectiveofChange"
+                                name="application_name" required /> -->
+                            </textarea>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Type of Change</strong></label><br />
+        
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="apicode" name="type_apicode"
+                                    [(ngModel)]="formData.type_apicode" />
+                                <label class="form-check-label" for="apicode">
+                                    API, Code Utilities, Libraries, Third-Party libraries etc.
+                                </label>
+                            </div>
+        
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="architectural" name="type_architectural"
+                                    [(ngModel)]="formData.type_architectural" />
+                                <label class="form-check-label" for="architectural">
+                                    Architectural
+                                </label>
+                            </div>
+        
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="audit_compliance"
+                                    name="type_audit_compliance" [(ngModel)]="formData.type_audit_compliance" />
+                                <label class="form-check-label" for="audit_compliance">
+                                    Audit Compliance
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="configuration"
+                                    name="type_configuration" [(ngModel)]="formData.type_configuration" />
+                                <label class="form-check-label" for="configuration">
+                                    Configuration
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="design"
+                                    name="type_design" [(ngModel)]="formData.type_design" />
+                                <label class="form-check-label" for="design">
+                                    Design
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="hardware"
+                                    name="type_hardware" [(ngModel)]="formData.type_hardware" />
+                                <label class="form-check-label" for="hardware">
+                                    Hardware
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="network"
+                                    name="type_network" [(ngModel)]="formData.type_network" />
+                                <label class="form-check-label" for="network">
+                                    Network
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="oem_recommendation"
+                                    name="type_oem_recommendation" [(ngModel)]="formData.type_oem_recommendation" />
+                                <label class="form-check-label" for="oem_recommendation">
+                                    OEM Recommendation
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="quality_changes"
+                                    name="type_quality_changes" [(ngModel)]="formData.type_quality_changes" />
+                                <label class="form-check-label" for="quality_changes">
+                                    Quality Changes (Common Services - logging, messages, etc.)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="security"
+                                    name="type_security" [(ngModel)]="formData.type_security" />
+                                <label class="form-check-label" for="security">
+                                    Security Level Check
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="Software"
+                                    name="type_Software" [(ngModel)]="formData.type_Software" />
+                                <label class="form-check-label" for="Software">
+                                    Software Changes (i.e. OS, Database, Web, Application Server Software)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="upgradation"
+                                    name="type_upgradation" [(ngModel)]="formData.type_upgradation" />
+                                <label class="form-check-label" for="upgradation">
+                                    Upgradation (Hardware or Software)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="others"
+                                    name="type_others" [(ngModel)]="formData.type_others" />
+                                <label class="form-check-label" for="others">
+                                   Others (DB Impact)
+                                </label>
+                            </div>
+        
+                        </div>
+        
+
+                    </div>
+
                 </div>
 
-                <div class="mb-3">
-                    <label name="initiation_date_label" class="form-label">Initiation Date</label>
-                    <input type="date" class="form-control" [(ngModel)]="formData.initiation_date"
-                        name="initiation_date" required />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Requester Contact Number</label>
-                    <input type="tel" class="form-control" [(ngModel)]="formData.contact_number" name="contact_number"
-                        required />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" required>Change Execution</label><br />
-                    <div>
-                        <label>
-                            <input type="radio" value="Normal" name="change_execution"
-                                [(ngModel)]="formData.change_execution">Normal
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="radio" value="Emergency" name="change_execution"
-                                [(ngModel)]="formData.change_execution">Emergency
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="radio" value="Compliance" name="change_execution"
-                                [(ngModel)]="formData.change_execution">Compliance
-                        </label>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" required>Change Category</label><br />
-                    <div>
-                        <label>
-                            <input type="radio" value="Major" name="change_category"
-                                [(ngModel)]="formData.change_category">Major
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="radio" value="Minor" name="change_category"
-                                [(ngModel)]="formData.change_category">Minor
-                        </label>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label" required>Nature of Change</label><br />
-                    <div>
-                        <label>
-                            <input type="radio" value="Temporary" name="nature_of_change"
-                                [(ngModel)]="formData.nature_of_change">Temporary
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="radio" value="Permanent" name="nature_of_change"
-                                [(ngModel)]="formData.nature_of_change">Permanent
-                        </label>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label" required>Implementation Date</label>
-                    <input type="date" class="form-control" [(ngModel)]="formData.implementation_date"
-                        name="implementation_date" />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label"><strong>Type of Change</strong></label><br />
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="apicode" name="type_apicode"
-                            [(ngModel)]="formData.type_apicode" />
-                        <label class="form-check-label" for="apicode">
-                            API, Code Utilities, Libraries, Third-Party libraries etc.
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="architectural" name="type_architectural"
-                            [(ngModel)]="formData.type_architectural" />
-                        <label class="form-check-label" for="architectural">
-                            Architectural
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="audit_compliance"
-                            name="type_audit_compliance" [(ngModel)]="formData.type_audit_compliance" />
-                        <label class="form-check-label" for="audit_compliance">
-                            Audit Compliance
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="configuration"
-                            name="type_configuration" [(ngModel)]="formData.type_configuration" />
-                        <label class="form-check-label" for="configuration">
-                            Configuration
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="design"
-                            name="type_design" [(ngModel)]="formData.type_design" />
-                        <label class="form-check-label" for="design">
-                            Design
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="hardware"
-                            name="type_hardware" [(ngModel)]="formData.type_hardware" />
-                        <label class="form-check-label" for="hardware">
-                            Hardware
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="network"
-                            name="type_network" [(ngModel)]="formData.type_network" />
-                        <label class="form-check-label" for="network">
-                            Network
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="oem_recommendation"
-                            name="type_oem_recommendation" [(ngModel)]="formData.type_oem_recommendation" />
-                        <label class="form-check-label" for="oem_recommendation">
-                            OEM Recommendation
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="quality_changes"
-                            name="type_quality_changes" [(ngModel)]="formData.type_quality_changes" />
-                        <label class="form-check-label" for="quality_changes">
-                            Quality Changes (Common Services - logging, messages, etc.)
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="security"
-                            name="type_security" [(ngModel)]="formData.type_security" />
-                        <label class="form-check-label" for="security">
-                            Security Level Check
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="Software"
-                            name="type_Software" [(ngModel)]="formData.type_Software" />
-                        <label class="form-check-label" for="Software">
-                            Software Changes (i.e. OS, Database, Web, Application Server Software)
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="upgradation"
-                            name="type_upgradation" [(ngModel)]="formData.type_upgradation" />
-                        <label class="form-check-label" for="upgradation">
-                            Upgradation (Hardware or Software)
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="others"
-                            name="type_others" [(ngModel)]="formData.type_others" />
-                        <label class="form-check-label" for="others">
-                           Others (DB Impact)
-                        </label>
-                    </div>
-
-                </div>
+                
+                
 
                 <button type="submit" class="btn btn-primary" [disabled]="formRef.invalid">Submit & Download
                     Word</button>

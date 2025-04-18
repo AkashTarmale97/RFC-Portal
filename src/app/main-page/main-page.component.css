@@ -1,3 +1,39 @@
+
+.main-wrapper {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.side-nav-bar {
+  width: 200px;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  height: 100%; /* Full height of parent */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.side-nav-bar-button {
+  width: 100%;
+  text-align: left;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto; /* Scroll if form gets long */
+  background-color: #ffffff;
+}
+
+.rfc-form-heading {
+  font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
 .main-wrapper {
     display: flex;
     height: 100%; /* Full height of screen */
@@ -26,13 +62,31 @@
   .main-content {
     flex: 1;
     padding: 2rem;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
+    background-color: #b96b6b;
   }
-  
+#initiation_date_input{
+  border: 1px solid black;
+}
+  .form-label{
+    font-weight: bold;
+  }
   button.btn.btn-primary {
     padding: revert;
+    border: 1px solid black;
+}
+.column-two > .mb-3 {
+  flex: 1;
+  min-width: 150px;
 }
 
+.column-two {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 60px;
+  /* gap: 20px; */
+}
   /* -----------------Form Css--------------------- */
   *,
 *::before,
@@ -171,9 +225,11 @@ input.form-control[readonly] {
 
 form {
   width: 100%;
-  max-width: 500px;
+  border: 1px groove black;
+  /* max-width: 500px; */
   padding: 2.5rem;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #c9afaf;
   border-radius: 0.5rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }

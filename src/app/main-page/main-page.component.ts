@@ -63,9 +63,21 @@ export class MainPageComponent {
     type_upgradation:false,
     type_others:false,
     change_category: '',
-    initiation_date_label: ''
+    initiation_date_label: '',
+    ObjectiveofChange:''
 
   };
+
+
+// // TO hide past dates
+mintoDate: string | undefined;
+
+ngOnInit(): void {
+  const today = new Date();
+  this.mintoDate = today.toISOString().split('T')[0]; // format: yyyy-MM-dd
+  this.formData.initiation_date = this.mintoDate;
+}
+
 
   constructor(private router: Router) { }
 
@@ -664,6 +676,55 @@ const typeOfChangeCell = new TableCell({
       ]
     });
 
+    const ObjectiveofChangelabel= new Paragraph({
+      spacing: {
+        before: 300, // space before in twips (20 twips = 1 point)
+      },
+      children: [
+        new TextRun({
+          text: "Objective of Change: [Define objective of the change. This could include new business requirements, product feature enhancements or problem rectification.]",
+          bold: true,
+        }),
+        new TextRun({ break: 2 })
+    
+      ],
+    })
+
+    const objectiveText: string = this.formData.ObjectiveofChange || "";
+
+    // Split the content by newline
+    const lines = objectiveText.split('\n');
+    
+    const ObjectiveofChangePara: Paragraph[] = [];
+    
+    lines.forEach((line) => {
+      const trimmed = line.trim();
+    
+      if (trimmed.startsWith('•') || trimmed.startsWith('●')) {
+        ObjectiveofChangePara.push(
+          new Paragraph({
+            text: trimmed.replace(/^•|^●/, '').trim(),
+            bullet: { level: 0 },
+          })
+        );
+      } else if (trimmed) {
+        ObjectiveofChangePara.push(
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: trimmed,
+                break: 1,
+              }),
+            ],
+          })
+        );
+      } else {
+        // Empty line = paragraph break
+        ObjectiveofChangePara.push(new Paragraph(""));
+      }
+    });
+
+
 
     const wordDoc = new Document({
       sections: [
@@ -673,7 +734,9 @@ const typeOfChangeCell = new TableCell({
           children: [
             titleAndCRFRow,
             new Paragraph({ spacing: { after: 300 } }), // space after title table
-            tablebelowCRFline
+            tablebelowCRFline,
+            ObjectiveofChangelabel,
+            ...ObjectiveofChangePara   //Spread the array to flatten it or it will give error
             // new Paragraph(`Application Name: ${this.formData.application_name}`),
             // new Paragraph(`Description: ${this.formData.description}`),
             // new Paragraph(`Email: ${this.formData.email}`),
