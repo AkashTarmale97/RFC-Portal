@@ -13,7 +13,7 @@
             <h2>Users Content</h2>
             <p>Display user data here...</p>
         </div>
-        <div *ngIf="activeTab === 'maker'">
+        <div *ngIf="activeTab === 'maker'"> 
             <h2>Maker Tab Content</h2>
             <p>Show maker functionality here...</p>
         </div>
@@ -29,28 +29,31 @@
                     <!-- Column 1 -->
                     <div class="column-two">
                         <div class="mb-3">
-                            <label class="form-label">Project/Application Name</label>
-                            <input style="border: 1px solid black;" type="text" class="form-control" [(ngModel)]="formData.application_name"
-                                name="application_name" required />
+                            <label class="form-label">Project/Application Name<span class="text-danger">*</span></label>
+                            <input style="border: 1px solid black;" type="text" class="form-control"
+                                [(ngModel)]="formData.application_name" name="application_name" required />
                         </div>
-        
+
                         <div class="mb-3">
-                            <label name="initiation_date_label" class="form-label">Initiation Date</label>
-                            <input id ="initiation_date_input" style="border: 1px solid black;"  type="date" class="form-control" [min]="mintoDate"   [(ngModel)]="formData.initiation_date"
+                            <label name="initiation_date_label" class="form-label">Initiation Date<span
+                                    class="text-danger">*</span></label>
+                            <input id="initiation_date_input" style="border: 1px solid black;" type="date"
+                                class="form-control" [min]="mintoDate" [(ngModel)]="formData.initiation_date"
                                 name="initiation_date" style="color: black;" required readonly />
                         </div>
-        
+
                         <div class="mb-3">
-                            <label class="form-label">Requester Contact Number</label>
-                            <input style="border: 1px solid black;" type="tel" class="form-control" [(ngModel)]="formData.contact_number" name="contact_number"
-                                required />
+                            <label class="form-label">Requester Contact Number<span class="text-danger">*</span></label>
+                            <input style="border: 1px solid black;" type="tel" class="form-control"
+                                [(ngModel)]="formData.contact_number" name="contact_number" required />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" required>Change Execution</label><br />
+                            <label class="form-label" required>Change Execution<span
+                                    class="text-danger">*</span></label><br />
                             <div>
                                 <label>
                                     <input type="radio" value="Normal" name="change_execution"
-                                        [(ngModel)]="formData.change_execution">Normal
+                                        [(ngModel)]="formData.change_execution" required>Normal
                                 </label>
                             </div>
                             <div>
@@ -67,11 +70,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" required>Change Category</label><br />
+                            <label class="form-label" required>Change Category<span
+                                    class="text-danger">*</span></label><br />
                             <div>
                                 <label>
                                     <input type="radio" value="Major" name="change_category"
-                                        [(ngModel)]="formData.change_category">Major
+                                        [(ngModel)]="formData.change_category" required>Major
                                 </label>
                             </div>
                             <div>
@@ -82,11 +86,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" required>Nature of Change</label><br />
+                            <label class="form-label" required>Nature of Change<span
+                                    class="text-danger">*</span></label><br />
                             <div>
                                 <label>
                                     <input type="radio" value="Temporary" name="nature_of_change"
-                                        [(ngModel)]="formData.nature_of_change">Temporary
+                                        [(ngModel)]="formData.nature_of_change" required>Temporary
                                 </label>
                             </div>
                             <div>
@@ -96,24 +101,28 @@
                                 </label>
                             </div>
                         </div>
-        
+
                         <div class="mb-3">
-                            <label class="form-label" required>Implementation Date</label>
-                            <input style="border: 1px solid black;" type="date" class="form-control" [(ngModel)]="formData.implementation_date"
-                                name="implementation_date" [min]="mintoDate" />
+                            <label class="form-label" required>Implementation Date<span
+                                    class="text-danger">*</span></label>
+                            <input style="border: 1px solid black;" type="date" class="form-control"
+                                [(ngModel)]="formData.implementation_date" name="implementation_date" [min]="mintoDate"
+                                required />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Objective of Change:</label>
+                            <label class="form-label">Objective of Change<span class="text-danger">*</span></label>
                             <textarea class="form-control" [(ngModel)]="formData.ObjectiveofChange"
-                            name="ObjectiveofChange" style="border: 1px solid black;" required >
+                                name="ObjectiveofChange"
+                                style="border: 1px solid black; height:75px; background-color: #c9afaf;" required>
                                 <!-- <input type="textarea" class="form-control" [(ngModel)]="formData.ObjectiveofChange"
                                 name="application_name" required /> -->
                             </textarea>
                         </div>
-        
+
                         <div class="mb-3">
-                            <label class="form-label"><strong>Type of Change</strong></label><br />
-        
+                            <label class="form-label"><strong>Type of Change<span
+                                        class="text-danger">*</span></strong></label><br />
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="apicode" name="type_apicode"
                                     [(ngModel)]="formData.type_apicode" />
@@ -121,15 +130,15 @@
                                     API, Code Utilities, Libraries, Third-Party libraries etc.
                                 </label>
                             </div>
-        
+
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="architectural" name="type_architectural"
-                                    [(ngModel)]="formData.type_architectural" />
+                                <input type="checkbox" class="form-check-input" id="architectural"
+                                    name="type_architectural" [(ngModel)]="formData.type_architectural" />
                                 <label class="form-check-label" for="architectural">
                                     Architectural
                                 </label>
                             </div>
-        
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="audit_compliance"
                                     name="type_audit_compliance" [(ngModel)]="formData.type_audit_compliance" />
@@ -145,22 +154,22 @@
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="design"
-                                    name="type_design" [(ngModel)]="formData.type_design" />
+                                <input type="checkbox" class="form-check-input" id="design" name="type_design"
+                                    [(ngModel)]="formData.type_design" />
                                 <label class="form-check-label" for="design">
                                     Design
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="hardware"
-                                    name="type_hardware" [(ngModel)]="formData.type_hardware" />
+                                <input type="checkbox" class="form-check-input" id="hardware" name="type_hardware"
+                                    [(ngModel)]="formData.type_hardware" />
                                 <label class="form-check-label" for="hardware">
                                     Hardware
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="network"
-                                    name="type_network" [(ngModel)]="formData.type_network" />
+                                <input type="checkbox" class="form-check-input" id="network" name="type_network"
+                                    [(ngModel)]="formData.type_network" />
                                 <label class="form-check-label" for="network">
                                     Network
                                 </label>
@@ -180,46 +189,101 @@
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="security"
-                                    name="type_security" [(ngModel)]="formData.type_security" />
+                                <input type="checkbox" class="form-check-input" id="security" name="type_security"
+                                    [(ngModel)]="formData.type_security" />
                                 <label class="form-check-label" for="security">
                                     Security Level Check
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="Software"
-                                    name="type_Software" [(ngModel)]="formData.type_Software" />
+                                <input type="checkbox" class="form-check-input" id="Software" name="type_Software"
+                                    [(ngModel)]="formData.type_Software" />
                                 <label class="form-check-label" for="Software">
                                     Software Changes (i.e. OS, Database, Web, Application Server Software)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="upgradation"
-                                    name="type_upgradation" [(ngModel)]="formData.type_upgradation" />
+                                <input type="checkbox" class="form-check-input" id="upgradation" name="type_upgradation"
+                                    [(ngModel)]="formData.type_upgradation" />
                                 <label class="form-check-label" for="upgradation">
                                     Upgradation (Hardware or Software)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="others"
-                                    name="type_others" [(ngModel)]="formData.type_others" />
+                                <input type="checkbox" class="form-check-input" id="others" name="type_others"
+                                    [(ngModel)]="formData.type_others" />
                                 <label class="form-check-label" for="others">
-                                   Others (DB Impact)
+                                    Others (DB Impact)
                                 </label>
                             </div>
-        
-                        </div>
-        
 
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" required>Impact on Existing Services<span
+                                    class="text-danger">*</span></label><br />
+                            <div>
+                                <label>
+                                    <input type="radio" value="Yes" name="impact_on_Existing"
+                                        [(ngModel)]="formData.impact_on_Existing" required>Yes
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" value="No" name="impact_on_Existing"
+                                        [(ngModel)]="formData.impact_on_Existing">No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" required>New service to be consumed by the channels:<span
+                                    class="text-danger">*</span></label><br />
+                            <div>
+                                <label>
+                                    <input type="radio" value="Yes" name="New_service_Consumed"
+                                        [(ngModel)]="formData.New_service_Consumed" required>Yes
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" value="No" name="New_service_Consumed"
+                                        [(ngModel)]="formData.New_service_Consumed">No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" required>Common Component Change, if any:(Generic Librry, DB
+                                Logger Library, Database Object definition, DPG, Cashe etc.)<span
+                                    class="text-danger">*</span></label><br />
+                            <div>
+                                <label>
+                                    <input type="radio" value="Yes" name="Common_Component_Change"
+                                        [(ngModel)]="formData.Common_Component_Change" required>Yes
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" value="No" name="Common_Component_Change"
+                                        [(ngModel)]="formData.Common_Component_Change">No
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Impact Details shown only when 'Yes' is selected -->
+                        <div class="mb-3" *ngIf="formData.Common_Component_Change === 'Yes'">
+                            <label class="form-label">Please specify Common Component Change Details:<span
+                                class="text-danger">*</span></label>
+                            <input type="text" class="form-control" style="border: 1px solid black;" [(ngModel)]="formData.Common_Component_Change_details"
+                                name="impact_details" #Common_Component_Change_details="ngModel" required />
+                        </div>
+                        
+                        </div>
+                    </div>
+                    <div *ngIf="formRef.submitted && formRef.invalid" class="text-danger">
+                        Please select at least one checkbox.
                     </div>
 
-                </div>
-
-                
-                
-
-                <button type="submit" class="btn btn-primary" [disabled]="formRef.invalid">Submit & Download
-                    Word</button>
+                    <button type="submit" class="btn btn-primary" title="Please fill out all fields"
+                        [disabled]="formRef.invalid">Submit & Download
+                        Word</button>
             </form>
 
             <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->

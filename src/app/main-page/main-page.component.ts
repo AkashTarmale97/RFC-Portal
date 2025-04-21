@@ -36,6 +36,12 @@ import { Router } from '@angular/router';
   styleUrl: './main-page.component.css'
 })
 export class MainPageComponent {
+addFootprintRow() {
+throw new Error('Method not implemented.');
+}
+removeFootprintRow(_t323: number) {
+throw new Error('Method not implemented.');
+}
   activeTab: string = "users";
 
   formData = {
@@ -51,32 +57,37 @@ export class MainPageComponent {
     type_apicode: false,
     type_architectural: false,
     type_infra: false,
-    type_audit_compliance:false,
-    type_hardware:false,
-    type_design:false,
-    type_configuration:false,
-    type_quality_changes:false,
-    type_oem_recommendation:false,
-    type_network:false,
-    type_security:false,
-    type_Software:false,
-    type_upgradation:false,
-    type_others:false,
+    type_audit_compliance: false,
+    type_hardware: false,
+    type_design: false,
+    type_configuration: false,
+    type_quality_changes: false,
+    type_oem_recommendation: false,
+    type_network: false,
+    type_security: false,
+    type_Software: false,
+    type_upgradation: false,
+    type_others: false,
+    impact_on_Existing: '',
+    New_service_Consumed: '',
     change_category: '',
     initiation_date_label: '',
-    ObjectiveofChange:''
-
+    Common_Component_Change: '',
+    ObjectiveofChange: '',
+    Common_Component_Change_details: '',
+    deployment_footprint: '',
+    deploymentFootprintTable: [],
+    
   };
+  // TO hide past dates
+  mintoDate: string | undefined;
+showFootprintTable: any;
 
-
-// // TO hide past dates
-mintoDate: string | undefined;
-
-ngOnInit(): void {
-  const today = new Date();
-  this.mintoDate = today.toISOString().split('T')[0]; // format: yyyy-MM-dd
-  this.formData.initiation_date = this.mintoDate;
-}
+  ngOnInit(): void {
+    const today = new Date();
+    this.mintoDate = today.toISOString().split('T')[0]; // format: yyyy-MM-dd
+    this.formData.initiation_date = this.mintoDate;
+  }
 
 
   constructor(private router: Router) { }
@@ -306,129 +317,129 @@ ngOnInit(): void {
     };
     const checkbox = (checked: boolean) => (checked ? '☑' : '☐');
 
-// Construct the paragraph with checkboxes
-const typeOfChangeCell = new TableCell({
-  columnSpan: 3, // merge if needed
-  children: [
-    new Paragraph({
+    // Construct the paragraph with checkboxes
+    const typeOfChangeCell = new TableCell({
+      columnSpan: 3, // merge if needed
       children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_apicode)} API, Code Utilities, Libraries, Third-Party libraries etc.`,
-          size: 20,
-          // font: 'Arial Unicode MS', // optional but safe
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_apicode)} API, Code Utilities, Libraries, Third-Party libraries etc.`,
+              size: 20,
+              // font: 'Arial Unicode MS', // optional but safe
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_architectural)} Architectural`,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_architectural)} Architectural`,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_audit_compliance)} Audit Compliance`,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_audit_compliance)} Audit Compliance`,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_configuration)} Configuration`,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_configuration)} Configuration`,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_design)} Design`,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_design)} Design`,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_hardware)} Hardware`,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_hardware)} Hardware`,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_network)} Network`,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_network)} Network`,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_oem_recommendation)} OEM Recommendation`,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_oem_recommendation)} OEM Recommendation`,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_quality_changes)} Quality Changes (Common Services - logging, messages, etc.) `,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_quality_changes)} Quality Changes (Common Services - logging, messages, etc.) `,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_Software)} Software Changes (i.e. OS, Database, Web, Application Server Software) `,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_Software)} Software Changes (i.e. OS, Database, Web, Application Server Software) `,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_security)} Security Level Check `,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_security)} Security Level Check `,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
-      ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_upgradation)} Upgradation (Hardware or Software) `,
-          size: 20,
-          // font: 'Arial Unicode MS',
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_upgradation)} Upgradation (Hardware or Software) `,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
         }),
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${checkbox(this.formData.type_others)} Others (DB Impact) `,
+              size: 20,
+              // font: 'Arial Unicode MS',
+            }),
+          ],
+        })
       ],
-    }),
-    new Paragraph({
-      children: [
-        new TextRun({
-          text: `${checkbox(this.formData.type_others)} Others (DB Impact) `,
-          size: 20,
-          // font: 'Arial Unicode MS',
-        }),
-      ],
-    })
-  ],
-});
+    });
     const tablebelowCRFline = new Table({
       width: { size: 100, type: WidthType.PERCENTAGE },
       rows: [
@@ -655,7 +666,7 @@ const typeOfChangeCell = new TableCell({
           ]
         }),
         new TableRow({
-          children:[
+          children: [
             new TableCell({
               // width: { size: 25, type: WidthType.PERCENTAGE },
               children: [
@@ -676,7 +687,7 @@ const typeOfChangeCell = new TableCell({
       ]
     });
 
-    const ObjectiveofChangelabel= new Paragraph({
+    const ObjectiveofChangelabel = new Paragraph({
       spacing: {
         before: 300, // space before in twips (20 twips = 1 point)
       },
@@ -686,7 +697,7 @@ const typeOfChangeCell = new TableCell({
           bold: true,
         }),
         new TextRun({ break: 2 })
-    
+
       ],
     })
 
@@ -694,12 +705,12 @@ const typeOfChangeCell = new TableCell({
 
     // Split the content by newline
     const lines = objectiveText.split('\n');
-    
+
     const ObjectiveofChangePara: Paragraph[] = [];
-    
+
     lines.forEach((line) => {
       const trimmed = line.trim();
-    
+
       if (trimmed.startsWith('•') || trimmed.startsWith('●')) {
         ObjectiveofChangePara.push(
           new Paragraph({
@@ -724,8 +735,76 @@ const typeOfChangeCell = new TableCell({
       }
     });
 
+    //Common Component Change details paragraph
+    const Common_Component_Change_details_text: string = this.formData.Common_Component_Change_details || "";
+    const lines1 = Common_Component_Change_details_text.split('\n');
+    const Common_Component_Change_details_para: Paragraph[] = [];
+    lines1.forEach((line) => {
+      const trimmed = line.trim();
+
+      if (trimmed.startsWith('•') || trimmed.startsWith('●')) {
+        Common_Component_Change_details_para.push(
+          new Paragraph({
+            text: trimmed.replace(/^•|^●/, '').trim(),
+            bullet: { level: 0 },
+          })
+        );
+      } else if (trimmed) {
+        Common_Component_Change_details_para.push(
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: trimmed,
+                break: 1,
+              }),
+            ],
+          })
+        );
+      } else {
+        // Empty line = paragraph break
+        Common_Component_Change_details_para.push(new Paragraph(""));
+      }
+    });
+
+    const Description_of_Change_para = new Paragraph({
+      children: [
+        new TextRun({ break: 2 }),
+        new TextRun({
+          text: "Description of Change: ",
+          bold: true
+        }),
+        new TextRun("[Clearly define the change request details.]"),
+        new TextRun({ break: 2 }),
+        new TextRun("a) Impact on Existing Services, if any: "),
+        new TextRun({
+          text: this.formData.impact_on_Existing,
+          bold: true,
+        }),
+        new TextRun({ break: 2 }),
+        new TextRun("b) New Service to be consumed by the channels: "),
+        new TextRun({
+          text: this.formData.New_service_Consumed,
+          bold: true,
+        }),
+        new TextRun({ break: 2 }),
+        new TextRun("c) Common Component Change, if any:(Generic Librry, DB Logger Library, Database Object definition, DPG, Cashe etc.): "),
+        new TextRun({
+          text: this.formData.Common_Component_Change,
+          bold: true,
+        }),
+        new TextRun({ break: 2 }),
+        new TextRun("Common Component Change Details: "),
+        new TextRun({ break: 1 }),
+        // new TextRun({
+        //   text: this.formData.Common_Component_Change_details
+        // }),
+      ],
+    })
+
+// -----------------------------------------------------------------------------------------------------  
 
 
+// -------------------------------==-----------------------------------------------------------------
     const wordDoc = new Document({
       sections: [
         {
@@ -736,11 +815,9 @@ const typeOfChangeCell = new TableCell({
             new Paragraph({ spacing: { after: 300 } }), // space after title table
             tablebelowCRFline,
             ObjectiveofChangelabel,
-            ...ObjectiveofChangePara   //Spread the array to flatten it or it will give error
-            // new Paragraph(`Application Name: ${this.formData.application_name}`),
-            // new Paragraph(`Description: ${this.formData.description}`),
-            // new Paragraph(`Email: ${this.formData.email}`),
-            // new Paragraph(`Details: ${this.formData.details}`),
+            ...ObjectiveofChangePara,   //Spread the array to flatten it or it will give error
+            Description_of_Change_para,
+            ...Common_Component_Change_details_para
           ],
         },
       ],
